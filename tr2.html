@@ -1,0 +1,607 @@
+<apex:page sidebar="false">
+ <meta charset="utf-8"/>
+  <title>jQuery UI Tabs - Vertical Tabs functionality</title> 
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script> 
+  <html>
+      <style>
+      body a:hover {
+    text-decoration: none;
+    border:none;
+        }
+
+       body a:active {
+    text-decoration: none;
+    border:0px solid black;
+    }
+      .hiddenlink {
+   text-decoration: none;
+  }
+
+  /* ===============for the top n left border======================= */
+  
+  .top-left-shadow{
+    width:100%;
+    height:100%;
+	overflow:scroll;
+    border-top:1px solid #209bc5;
+    border-left:1px solid #209bc5;
+  }
+  
+  
+  /*===============================================*/
+  
+  
+  /**/
+  /*--table style for Demographic Details--*/
+  
+  
+   .form_demographic{
+   margin:20px;
+   font-family:verdana; /* needs to be changed as per requirement*/
+   font-size:12px;
+   margin-bottom:2px;
+   vertical-align:top;  
+   }
+
+  .input_demographic{
+    margin:7px 25px 5px 2px;
+   }
+   
+   .demographic_field{
+     width:140px;
+     padding:1px 4px ;
+     
+     margin:4px;
+   }
+
+   .demographic_field_state{
+    width:80px;
+    padding:1px 4px ;
+     margin:4px;
+   }
+   .demographic_field_radio{
+    margin-top:10px;
+    margin-bottom:10px;
+    }
+   .demographic_field_radio:checked{
+     margin-top:10px;
+    margin-bottom:10px;
+    }
+    
+   .demographic_field_dob{
+   width:80px;
+   padding:1px 4px;
+   margin :4px;
+
+  }
+  .demographic_field_weight{
+   width:80px;
+   padding:1px 4px;
+   margin-top:4px;
+
+  }
+  .Highlight{
+   color:blue;
+   }
+  /*--table style for Demographic Details Ends--*/
+  /*--table style for History_Illness Details--*/
+  
+  
+   .form_History_Illness{
+   margin:20px;
+   font-family:verdana; /* needs to be changed as per requirement*/
+   font-size:12px;
+   margin-bottom:2px;
+   vertical-align:top;
+   
+   
+   }
+
+  
+   
+   .History_field{
+     width:800px;
+     padding:1px 4px ;
+     
+     margin:4px;
+   }
+       
+  
+  /*--table style forHistory_Illness Details Ends--*/
+  
+/*------------------------------------------------------------------------------------------------------------------------------*/  
+/*=========================================================================*/
+  .big-wrap{
+        width:100%;
+    }
+    .right-pane{
+        vertical-align:top;
+    }
+    .left-pane{
+        width:22%;
+        vertical-align:top;
+        
+    }
+  /*=========================================================================*/
+      
+      .top_frame {
+  margin: 2px;
+  padding: 1px;
+  float: left;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  height: 55.38px;
+  width:100%;
+  background-color: #209bc2;
+  border-color: #209bc2;
+  border-style: solid;
+  border-width: 2px;
+}
+#tabalign {
+    list-style-type: none;
+    margin: 10px;
+    padding: 0;
+}
+.tabalg{
+    display: inline;
+    margin:40px 0px 0px 30px;
+}
+.Nav_Bar_Items{
+    
+    left:280px;
+    top:23px;
+    width:190px;
+    height:30px;
+    z-index:2;
+}
+#Nav_Patient_Intake{
+     font-family: Calibri, "Calibri Bold", "Calibri Bold Italic", "Calibri Italic", "Calibri Light";
+    font-size: 22px;
+    color: #666666;
+    font-weight: bold;    
+    text-transform: uppercase;
+  }
+  #Nav_Protocol_Search{
+  font-family: Calibri, "Calibri Bold", "Calibri Bold Italic", "Calibri Italic", "Calibri Light";
+    font-size: 22px;
+    color: #666666;
+    font-weight: bold;    
+    text-transform: uppercase;
+  
+  }
+  .lefttop_frame{
+  margin: 2px;
+  padding: 1px;
+  float: left;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  height:400px;
+  width: 100%;
+  background-color: #ffffff;
+  border-color: #209bc2;
+  border-style: solid;
+  border-width: 2px;
+  }
+  
+  #tabaligns {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+ 
+
+.patidemotabcss{
+    margin: 2px;
+    padding: 1px;
+    float: left;
+    height:400px;
+    width: 73%;
+    background-color: #ffffff;
+    border-top:2px solid #209bc2;
+    border-left:2px solid #209bc2;
+  }
+  .callinfotabcss {
+    margin: 2px;
+    padding: 1px;
+    float: left;
+    height:400px;
+    width: 73%;
+    background-color: #ffffff;
+    border-top:2px solid #209bc2;
+    border-left:2px solid #209bc2;
+  }
+  
+  
+  /*------------------------------------------------------------------------------------------------------------------------------*/
+  
+ 
+  .histprestabcss{
+    margin: 2px;
+    padding: 1px;
+    float: left;
+    height:400px;
+    width: 73%;
+    background-color: #ffffff;
+    border-top:2px solid #209bc2;
+    border-left:2px solid #209bc2;
+  }
+
+  .medihisttabcss{
+    margin: 2px;
+    padding: 1px;
+    float: left;
+    height:400px;
+    width: 73%;
+    background-color: #ffffff;
+    border-top:2px solid #209bc2;
+    border-left:2px solid #209bc2;
+  }
+
+  .addinfotabcss{
+    margin: 2px;
+    padding: 1px;
+    float: left;
+    height:400px;
+    width: 73%;
+    background-color: #ffffff;
+    border-top:2px solid #209bc2;
+    border-left:2px solid #209bc2;
+  }
+  .s_b_chief_complaint_tabcss{
+    margin: 2px;
+    padding: 1px;
+    float: left;
+    height:400px;
+    width: 73%;
+    background-color: #ffffff;
+    border-top:2px solid #209bc2;
+    border-left:2px solid #209bc2;
+  }
+
+  .s_b_keyword_tabcss{
+    margin: 2px;
+    padding: 1px;
+    float: left;
+    height:400px;
+    width: 73%;
+    background-color: #ffffff;
+    border-top:2px solid #209bc2;
+    border-left:2px solid #209bc2;
+  }
+  .s_b_title_tabcss{
+    margin: 2px;
+    padding: 1px;
+    float: left;
+    height:400px;
+    width: 73%;
+    background-color: #ffffff;
+    border-color: #209bc2;
+    border-style: solid;
+    border-width: 2px;
+  }
+/*------------------------------------------------------------------------------------------------------------------------------*/  
+  
+  
+  .Nav_Bar_Items{
+      font-family: Calibri, "Calibri Bold", "Calibri Bold Italic", "Calibri Italic", "Calibri Light";
+      font-size: 22px;
+      color: #666666;
+      font-weight: bold;
+      text-transform: uppercase;
+  }
+  
+  .All_Menus {
+  font-family: Calibri, "Calibri Bold", "Calibri Bold Italic", "Calibri Italic", "Calibri Light";
+  font-size: 18px;
+  color: #000;
+  font-weight: normal;
+  text-transform: uppercase;
+  }
+  
+  
+  .All_Menus_search {
+  font-family: Calibri, "Calibri Bold", "Calibri Bold Italic", "Calibri Italic", "Calibri Light";
+  font-size: 18px;
+  color: #000;
+  font-weight: normal;
+  text-transform: uppercase;
+  } 
+ 
+  .Patient_Details_Label {
+  font-family: Calibri, "Calibri Bold", "Calibri Bold Italic", "Calibri Italic", "Calibri Light";
+  font-size: 14px;
+  color: #209bc2;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: right;
+  
+}
+.Patient_Details_Data {
+    font-family: Calibri, "Calibri Bold", "Calibri Bold Italic", "Calibri Italic", "Calibri Light";
+    font-size: 14px;
+    color: #666666;
+    font-weight: lighter;
+    text-transform: uppercase;    
+    text-align: left;
+                       
+}
+/*for border issue  */
+
+    *{                          /* decline border*/
+    outline :none;
+    }
+    .container_section_frame{   /*for overflow controlled div */      
+        overflow: auto;
+        margin-top : 8px;
+        height: 120px;
+        position: relative;
+        width: 100%;
+        backface-visibility: hidden;
+        will-change: overflow;
+     }
+     
+     .White_Line_Seperator{
+        border :2px solid #FBFBEF;
+        margin :4px 1%;
+     }
+     
+    .All_Menus{
+         margin:15px 15px;
+    } 
+    .All_Menus_search{
+        margin:15px 15px;
+    }
+
+/*------------------*/
+
+  </style>
+   <script>
+  $(function() {
+    $( "#tabs" ).tabs();
+    
+  });
+  
+  $(function() {
+    $( "#leftnavigation" ).tabs();
+    
+  });
+ 
+  $(function() {
+    $( "#leftnavigationsearch" ).tabs();
+  });
+    
+$(document).ready(function(){
+    $("#patidemo a").css("color","#209bc2");
+    $("#patidemo a").css("border-top","2px solid #209bc2");
+    $(".All_Menus a").click(function(){
+        $(".All_Menus a").css("border-top","0px solid white");
+         $(".All_Menus a").css("color","black")
+        $(this).css("border-top","2px solid #209bc2");
+        $(this).css("color","#209bc2");
+        
+    });
+  });
+  
+ $(document).ready(function(){
+    $(".Nav_Bar_Items a").css("color","#ffffff");
+    $("#tabIntake a").css("border-top","2px solid white");
+    $(".Nav_Bar_Items a").click(function(){
+        $(".Nav_Bar_Items a").css("border","0px solid white");
+        $(this).css("border-top","2px solid white");
+        $(this).css("color","#ffffff");
+    });
+  });
+  
+  $(document).ready(function(){
+    $("#sbchief a").css("color","#209bc2");
+    $("#sbchief a").css("border-top","2px solid #209bc2");
+    $(".All_Menus_search a").click(function(){
+        $(".All_Menus_search a").css("border-top","0px solid #209bc2");
+        $(".All_Menus_search a").css("color","black");
+        $(this).css("border-top","2px solid #209bc2");
+        $(this).css("color","#209bc2");
+       
+    });
+  });
+  
+  </script>
+  <body>
+  <div id="tabs">
+  <div class="top_frame ">
+      <ul id="tabalign">
+        <li id="tabIntake" class="Nav_Bar_Items tabalg"> <a href="#Intakesection" class="hiddenlink active"> Intake </a></li>
+        <li id="tabSearch" class="Nav_Bar_Items tabalg"><a href="#Searchsection" class="hiddenlink"> Search </a></li>
+      </ul>
+    </div>
+    <div id="Intakesection" class="lefttop_frame">
+       
+       <div id="leftnavigation">
+        <table class="big-wrap">
+        <tr>
+        <td class="left-pane">
+        <div>
+                <div class="container_section_frame">
+                <apex:PanelGrid columnClasses="Patient_Details_Label,Patient_Details_Data" columns="2">
+                     
+          <apex:outputLabel >Name</apex:outputLabel>
+           <apex:outputLabel >First Middle Name</apex:outputLabel>
+           <apex:outputLabel >DOB</apex:outputLabel>
+           <apex:outputLabel >03/13/1980 [35 Years Old]</apex:outputLabel>
+          <apex:outputLabel >Gender</apex:outputLabel>
+           <apex:outputLabel >Female</apex:outputLabel>
+           <apex:outputLabel >Weight</apex:outputLabel>
+           <apex:outputLabel >200 lbs [68.6 kgs]</apex:outputLabel>
+          </apex:PanelGrid>
+          </div>
+            <ul id="tabaligns">
+                        <li id="patidemo" class="All_Menus"> <a href="#patidemotab" class="hiddenlink  active"> PATIENT DEMOGRAPHICS</a></li>
+                        <li id="callinfo" class="All_Menus"><a href="#callinfotab" class="hiddenlink "> CALLER INFORMATION</a></li>
+                        <li id="histpres" class="All_Menus"><a href="#histprestab" class="hiddenlink "> HISTORY OF PRESENT ILLNESS</a></li>
+                        <li id="medihist" class="All_Menus"><a href="#medihisttab" class="hiddenlink "> MEDICAL/HEALTH HISTORY</a></li>
+                        <li id="addinfo" class="All_Menus"><a href="#addinfotab" class="hiddenlink "> ADDITIONAL INFORMATION</a></li>
+            </ul> 
+        </div>
+         </td>
+        <td class="right-pane">
+        <div id="patidemotab" >
+            <div class="container_section_frame"></div>
+            <div class="top-left-shadow">
+                <table class="form_demographic">
+                           <tr>
+                             <td>
+                                First Name:<br/><input type="text" class="demographic_field "/>
+                             </td>
+                             <td>
+                                Middle Name:<br/><input type="text" class="demographic_field"/>
+                             </td>
+                             <td>
+                                last Name:<br/><input type="text" class="demographic_field"/>
+                             </td>
+                             <td colspan="2">
+                             </td>
+                        </tr>
+                        <tr>
+                            <td>
+                               Address1:<br/><input type="text" class="demographic_field"/>
+                            </td>
+                            <td>
+                               Address2:<br/><input type="text" class="demographic_field"/>
+                           </td>
+                           <td>
+                               city:<br/><input type="text" class="demographic_field"/>
+                           </td>
+                           <td>
+                                State:<br/><select class="demographic_field_state"><option>PA</option></select>
+                          </td>
+                          <td>
+                              Zip Code:<br/><input type="text" class="demographic_field"/>
+                          </td>
+                      </tr>   
+                      <tr>
+                          <td>
+                              Email:<br/><input type="text" class="demographic_field"/>
+                          </td>
+                          <td colspan="4">
+                          </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           Date of Birth:*<br/><input type="text" class="demographic_field_dob"/><br/><span>[5/25/2015]</span>
+                        </td>
+                        <td>
+                          Gender:<br/><input type="radio" name="gender" class="demographic_field_radio"/> Female <input type="radio" name="gender" class="demographic_field_radio"/> Male
+                      </td>
+                      <td>
+                         Weight(lbs):<br/><input type="text" name="Weight" class="demographic_field_weight"/>
+                        
+                      </td>
+                     <td colspan="2">
+                     </td>
+                  </tr>
+         </table>
+         </div>
+        </div>
+        <div id="callinfotab" >
+              testsdsd
+        </div>  
+        <div id="histprestab" >
+            <div class="container_section_frame"></div>
+            <div class="top-left-shadow">
+                <table class="form_History_Illness">
+                       <tr>
+                         <td>
+                            Past Medical History:<br/><textarea class="History_field "></textarea>
+                         </td>
+                         
+                        </tr>
+                        <tr>
+                            <td>
+                                Past Surgical History:<br/><textarea class="History_field"></textarea>
+                            </td>
+                        </tr>   
+                      <tr>
+                          <td>
+                              Chronic Illnesses:<br/><textarea class="History_field"></textarea>
+                          </td>
+                          
+                     </tr>
+                     <tr>
+                        <td>
+                           Recent Hospitalizations:<br/><textarea class="History_field"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                           Current Medications:<br/><textarea class="History_field"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                           Immunizations:<br/><textarea class="History_field"></textarea>
+                        </td>
+                    </tr>
+         </table>
+        </div>
+        </div>
+        <div id="medihisttab" >
+            testsdjslasl
+        </div>
+        <div id="addinfotab" >
+            testdkj jkasdj
+        </div>
+        </td>
+        </tr>
+        </table>
+       </div>
+    </div>
+    <div id="Searchsection" class="lefttop_frame">
+     <div id="leftnavigationsearch">
+        <table class="big-wrap">
+        <tr>
+        <td class="left-pane">
+        <div>
+        <div class="container_section_frame">
+        <apex:PanelGrid columnClasses="Patient_Details_Label,Patient_Details_Data" columns="2">
+             
+  <apex:outputLabel >Name</apex:outputLabel>
+   <apex:outputLabel >First Middle Name</apex:outputLabel>
+   <apex:outputLabel >DOB</apex:outputLabel>
+   <apex:outputLabel >03/13/1980 [35 Years Old]</apex:outputLabel>
+  <apex:outputLabel >Gender</apex:outputLabel>
+   <apex:outputLabel >Female</apex:outputLabel>
+   <apex:outputLabel >Weight</apex:outputLabel>
+   <apex:outputLabel >200 lbs [68.6 kgs]</apex:outputLabel>
+  </apex:PanelGrid>
+  </div>
+    <ul id="tabaligns">
+                <li id="sbchief" class="All_Menus_search"> <a href="#s_b_chief_complaint" class="hiddenlink  active"> SEARCH BY CHIEF COMPLAINT</a></li>
+                <li id="sbkey" class="All_Menus_search"><a href="#s_b_keyword" class="hiddenlink "> SEARCH BY KEYWORD</a></li>
+                <li id="sbtitle" class="All_Menus_search"><a href="#s_b_title" class="hiddenlink "> SEARCH BY TITLE</a></li>
+                 
+            </ul> 
+        </div>
+          </td>
+          <td>
+        <div id="s_b_chief_complaint" class="s_b_chief_complaint_tabcss">
+            <div class="container_section_frame"></div><hr class="White_Line_Seperator" />
+                test
+        </div>
+        <div id="s_b_keyword" class="s_b_keyword_tabcss">
+              testsdsd
+        </div>  
+        <div id="s_b_title" class="s_b_title_tabcss">
+            testdasd
+        </div>
+        </td>
+        </tr>
+        </table>
+       </div>
+    </div>
+    
+   </div>
+  </body>
+  </html>
+</apex:page>
